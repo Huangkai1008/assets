@@ -1,0 +1,748 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "觅鹿出海 API",
+    "description": "觅鹿出海 API",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/api/v1/uploadfile": {
+      "post": {
+        "tags": [
+          "generic"
+        ],
+        "summary": "上传文件",
+        "operationId": "upload_file_api_v1_uploadfile_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_upload_file_api_v1_uploadfile_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/browsers": {
+      "get": {
+        "tags": [
+          "generic"
+        ],
+        "summary": "获取窗口列表",
+        "operationId": "get_browsers_api_v1_browsers_get",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1,
+              "title": "Page"
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 10,
+              "title": "Size"
+            }
+          },
+          {
+            "name": "browser_name",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "窗口名",
+              "title": "Browser Name"
+            },
+            "description": "窗口名"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BrowsersResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/facebook/profiles": {
+      "post": {
+        "tags": [
+          "facebook"
+        ],
+        "summary": "批量改资料",
+        "operationId": "batch_update_profiles_api_v1_facebook_profiles_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/facebook/join-group": {
+      "post": {
+        "tags": [
+          "facebook"
+        ],
+        "summary": "批量加群",
+        "operationId": "batch_join_group_api_v1_facebook_join_group_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JoinGroupRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/facebook/posts": {
+      "post": {
+        "tags": [
+          "facebook"
+        ],
+        "summary": "群发 facebook 帖子",
+        "operationId": "post_facebook_posts_api_v1_facebook_posts_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PostRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/facebook/streamers": {
+      "post": {
+        "tags": [
+          "facebook"
+        ],
+        "summary": "直播间截流",
+        "operationId": "streamer_facebook_streamers_api_v1_facebook_streamers_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StreamerRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/facebook/messages": {
+      "post": {
+        "tags": [
+          "facebook"
+        ],
+        "summary": "批量私信",
+        "operationId": "message_facebook_messages_api_v1_facebook_messages_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MessageRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/facebook/collect-users": {
+      "post": {
+        "tags": [
+          "facebook"
+        ],
+        "summary": "用户采集",
+        "operationId": "collect_facebook_users_api_v1_facebook_collect_users_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserCollectRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Body_upload_file_api_v1_uploadfile_post": {
+        "properties": {
+          "file": {
+            "type": "string",
+            "format": "binary",
+            "title": "File"
+          }
+        },
+        "type": "object",
+        "required": [
+          "file"
+        ],
+        "title": "Body_upload_file_api_v1_uploadfile_post"
+      },
+      "Browser": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id",
+            "description": "窗口ID"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "窗口名"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name"
+        ],
+        "title": "Browser"
+      },
+      "BrowsersResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Group"
+            },
+            "type": "array",
+            "title": "Items",
+            "description": "分组列表"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total",
+            "description": "总数"
+          }
+        },
+        "type": "object",
+        "required": [
+          "items",
+          "total"
+        ],
+        "title": "BrowsersResponse"
+      },
+      "Group": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id",
+            "description": "分组ID"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "description": "分组名"
+          },
+          "browsers": {
+            "items": {
+              "$ref": "#/components/schemas/Browser"
+            },
+            "type": "array",
+            "title": "Browsers",
+            "description": "窗口列表"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "browsers"
+        ],
+        "title": "Group"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "JoinGroupRequest": {
+        "properties": {
+          "browser_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Browser Ids",
+            "description": "窗口ID列表"
+          },
+          "browser_concurrent": {
+            "type": "integer",
+            "title": "Browser Concurrent",
+            "description": "窗口并发数",
+            "default": 5
+          },
+          "group_link": {
+            "type": "string",
+            "title": "Group Link",
+            "description": "群链接"
+          },
+          "interval": {
+            "type": "integer",
+            "title": "Interval",
+            "description": "加群间隔",
+            "default": 5
+          }
+        },
+        "type": "object",
+        "required": [
+          "browser_ids",
+          "group_link"
+        ],
+        "title": "JoinGroupRequest"
+      },
+      "MessageRequest": {
+        "properties": {
+          "browser_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Browser Ids",
+            "description": "窗口ID列表"
+          },
+          "browser_concurrent": {
+            "type": "integer",
+            "title": "Browser Concurrent",
+            "description": "窗口并发数",
+            "default": 5
+          },
+          "filename": {
+            "type": "string",
+            "title": "Filename",
+            "description": "文件名"
+          },
+          "message_content": {
+            "type": "string",
+            "title": "Message Content",
+            "description": "私信内容"
+          },
+          "interval": {
+            "type": "integer",
+            "title": "Interval",
+            "description": "群发间隔",
+            "default": 5
+          }
+        },
+        "type": "object",
+        "required": [
+          "browser_ids",
+          "filename",
+          "message_content"
+        ],
+        "title": "MessageRequest"
+      },
+      "PostRequest": {
+        "properties": {
+          "browser_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Browser Ids",
+            "description": "窗口ID列表"
+          },
+          "browser_concurrent": {
+            "type": "integer",
+            "title": "Browser Concurrent",
+            "description": "窗口并发数",
+            "default": 5
+          },
+          "post_link": {
+            "type": "string",
+            "title": "Post Link",
+            "description": "帖子链接"
+          },
+          "group_link": {
+            "type": "string",
+            "title": "Group Link",
+            "description": "群链接"
+          },
+          "interval": {
+            "type": "integer",
+            "title": "Interval",
+            "description": "群发间隔",
+            "default": 5
+          }
+        },
+        "type": "object",
+        "required": [
+          "browser_ids",
+          "post_link",
+          "group_link"
+        ],
+        "title": "PostRequest"
+      },
+      "ProfileRequest": {
+        "properties": {
+          "browser_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Browser Ids",
+            "description": "窗口ID列表"
+          },
+          "browser_concurrent": {
+            "type": "integer",
+            "title": "Browser Concurrent",
+            "description": "窗口并发数",
+            "default": 5
+          },
+          "avatar_filename": {
+            "type": "string",
+            "title": "Avatar Filename",
+            "description": "头像文件名"
+          },
+          "cover_filename": {
+            "type": "string",
+            "title": "Cover Filename",
+            "description": "封面文件名"
+          },
+          "signature": {
+            "type": "string",
+            "maxLength": 100,
+            "title": "Signature",
+            "description": "个性签名"
+          }
+        },
+        "type": "object",
+        "required": [
+          "browser_ids",
+          "avatar_filename",
+          "cover_filename",
+          "signature"
+        ],
+        "title": "ProfileRequest"
+      },
+      "StreamerRequest": {
+        "properties": {
+          "browser_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Browser Ids",
+            "description": "窗口ID列表"
+          },
+          "browser_concurrent": {
+            "type": "integer",
+            "title": "Browser Concurrent",
+            "description": "窗口并发数",
+            "default": 5
+          },
+          "stream_link": {
+            "type": "string",
+            "title": "Stream Link",
+            "description": "直播间链接"
+          },
+          "message_content": {
+            "type": "string",
+            "maxLength": 100,
+            "title": "Message Content",
+            "description": "信息内容"
+          },
+          "interval": {
+            "type": "integer",
+            "title": "Interval",
+            "description": "群发间隔",
+            "default": 5
+          },
+          "loop_count": {
+            "type": "integer",
+            "title": "Loop Count",
+            "description": "循环次数",
+            "default": 5
+          }
+        },
+        "type": "object",
+        "required": [
+          "browser_ids",
+          "stream_link",
+          "message_content"
+        ],
+        "title": "StreamerRequest"
+      },
+      "UserCollectRequest": {
+        "properties": {
+          "browser_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Browser Ids",
+            "description": "窗口ID列表"
+          },
+          "browser_concurrent": {
+            "type": "integer",
+            "title": "Browser Concurrent",
+            "description": "窗口并发数",
+            "default": 5
+          },
+          "keyword": {
+            "type": "string",
+            "title": "Keyword",
+            "description": "关键词"
+          }
+        },
+        "type": "object",
+        "required": [
+          "browser_ids",
+          "keyword"
+        ],
+        "title": "UserCollectRequest"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}
